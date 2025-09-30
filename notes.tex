@@ -1,0 +1,151 @@
+\documentclass{report}
+\usepackage{hyperref} % For clickable links and bookmarks
+\usepackage{bookmark}
+
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{amsmath} % For math environments
+\usepackage{tcolorbox}
+\input{preamble}
+\setlength{\parindent}{0pt} % Ensure that no indent is added
+\title{21-259 Calculus in 3D}
+\date{First Edition}
+\author{Compiled by Salman Hajizada}
+
+\begin{document}
+\maketitle
+
+\setcounter{chapter}{-1}
+\chapter{Disclaimer}
+This is not a textbook. Do not use this text to learn the concepts.
+This is a revision guide or notes used to refresh your memory of the theorems. 
+The best way to learn the content is to read the book, work through
+the guided exercises and do some practice problems. 
+
+Good luck,
+
+SH
+\setcounter{chapter}{11}
+\chapter{Vectors and the Geometry of Space}
+
+\section{Three-Dimensional Coordinate System}
+
+\textbf{Right-hand rule} for determining the coordinate axis:
+
+\includegraphics[width=0.5\textwidth]{images/right_hand_rule.png}
+
+Projection of a point $(x, y, z)$ onto
+\begin{itemize}
+    \item $x-y$ axis: (x, y, 0)
+    \item $x-z$ axis: (x, 0, z)
+    \item $y-z$ axis: (0, y, z)
+\end{itemize} 
+
+\textbf{Distance formula in 3 dimensions:} Between two points $(x_1, y_1, z_1)$ and 
+$(x_2, y_2. z_2)$, the distance is given by:
+\[\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 +(z_2 - z_1)^2}\]
+
+\textbf{Equation of a Sphere} with center at $(h, k, l)$ and radius $r$ is:
+
+\[(x - h)^2 + (y - k)^2 + (z - l)^2 = r^2\]
+
+\section{Vectors}
+
+I will skip the basics, like vector addition definition, etc.
+
+Components of a vector (for notation):
+\[\aaa = \langle a_1, a_2, a_3 \rangle\]
+
+Given points $A(x_1, y_1, z_1)$ and $B(x_2, y_2, z_2)$, 
+
+\[\overrightarrow{AB} = \aaa = \langle x_2 - x_1, y_2 - y_1, z_2 - z_1 \rangle\]
+
+\textbf{Magnitude of a vector} $\samplevec$ is 
+\[|\aaa| = \sqrt{a_1^2 + a_2^2 + a_3^2}\]
+
+\textbf{Unit vectors:} 
+\[\ii = \langle 1, 0, 0 \rangle, \quad \jj = \langle 0, 1, 0 \rangle, \quad \kk = \langle 0, 0, 1 \rangle\]
+
+
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!75!black, title=Algebraic Properties of Vectors in $\Rn$]
+$\forall$ $\uu, \vv, \ww \in \Rn$ and scalars $c$ and $d$:
+\begin{enumerate}
+    \item \textbf{Commutativity of addition:} $\uu + \vv = \vv + \uu$
+    \item \textbf{Associativity of addition:} $\uu + (\vv + \ww) = (\uu + \vv) + \ww$
+    \item \textbf{Additive identity:} $\uu + \0 = \uu$
+    \item \textbf{Additive inverse:} $\uu + (-\uu) = \0$
+    \item \textbf{Distributivity of scalar multiplication over addition (vectors):} $c(\uu + \vv) = c\uu + c\vv$
+    \item \textbf{Distributivity of scalar multiplication over addition (scalars):} $(c + d)\uu = c\uu + d\uu$
+    \item \textbf{Associativity of scalar multiplication:} $(cd)\uu = c(d\uu)$
+    \item \textbf{Scalar identity:} $1 \uu = \uu$
+\end{enumerate}
+\end{tcolorbox}
+
+\section{The Dot Product}
+
+\begin{definition}
+If $\samplevec$ and $\bb = \langle b_1, b_2, b_3\rangle$ then the \textbf{dot product}
+of $\aaa $ and $\bb$ is 
+\[
+\aaa \cdot \bb = a_1 b_1 + a_2 b_2 + a_3 b_3
+\]
+\end{definition}
+
+\begin{tcolorbox}[colback=red!5!white, colframe=red!75!black, title=Properties of the Dot Product]
+$\forall$ vectors $\aaa, \bb, \cc$ and scalar $c$:
+\begin{enumerate}
+    \item $\aaa \cdot \aaa = |\aaa|^2$
+    \item $\aaa \cdot \bb = \bb \cdot \aaa$
+    \item $\aaa \cdot (\bb + \cc) = \aaa \cdot \bb + \aaa \cdot \cc$
+    \item $(c \aaa) \cdot \bb = c (\aaa \cdot \bb) = \aaa \cdot (c \bb)$
+    \item $\0 \cdot \aaa = 0$
+\end{enumerate}
+\end{tcolorbox}
+
+\begin{theorem}
+    If $\theta$ is the angle between two vectors $\aaa, \bb$ then 
+    \[\aaa \cdot \bb = |\aaa| |\bb| \cos \theta\]
+\end{theorem}
+
+\begin{corollary}
+    Two vectors $\aaa, \bb$ are orthogonal iff $\aaa \cdot \bb = 0$
+\end{corollary}
+
+The \textbf{direction angles} of a non-zero vector $\aaa$ are the angles 
+$\alpha, \beta, \gamma$ that $\aaa$ makes with the positive $x$-, $y$-, and $z$-axes, respectively.
+
+The cosines of these angles are called \textbf{direction cosines}:
+
+\[\cos \alpha = \frac{\aaa \cdot \ii}{|\aaa||\ii|} = \frac{a_1}{|\aaa|},
+\quad \cos \beta = \frac{a_2}{|\aaa|},
+\quad \cos \gamma = \frac{a_3}{|\aaa|}\]
+
+Some nice properties of direction cosines:
+
+\[\cos^2 \alpha + \cos^2 \beta + \cos^2 \gamma = 1\]
+
+\[\frac{\aaa}{|\aaa|} = \langle \cos \alpha, \cos \beta, \cos \gamma \rangle\]
+
+\textbf{Projections:}
+
+The \textbf{projection of} $\bb$ \textbf{onto} $\aaa$ means we drop a perpendicular 
+from the tip of $\bb$ onto the line spanned by $\aaa$. The resulting vector is called 
+the vector projection of $\bb$ onto $\aaa$.
+
+The \textbf{scalar projection of} $\bb$ \textbf{onto} $\aaa$ is the length of this 
+projection, given by
+\[
+\text{comp}_{\aaa} \bb = |\bb|\cos\theta = \frac{\aaa \cdot \bb}{|\aaa|},
+\]
+where $\theta$ is the angle between $\aaa$ and $\bb$.
+
+The \textbf{vector projection} of $\bb$ onto $\aaa$ is obtained by multiplying the 
+unit vector in the direction of $\aaa$ by the scalar projection:
+\[
+\text{proj}_{\aaa} \bb = \left(\text{comp}_{\aaa} \bb \right)\frac{\aaa}{|\aaa|} 
+= \frac{\aaa \cdot \bb}{|\aaa|^2}\aaa
+\]
+
+\section{The Cross Product}
+
+\end{document}
