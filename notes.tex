@@ -31,8 +31,9 @@ SH
 \section{Three-Dimensional Coordinate System}
 
 \textbf{Right-hand rule} for determining the coordinate axis:
-
-\includegraphics[width=0.5\textwidth]{images/right_hand_rule.png}
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{images/right_hand_rule.png}
+\end{center}
 
 Projection of a point $(x, y, z)$ onto
 \begin{itemize}
@@ -148,4 +149,62 @@ unit vector in the direction of $\aaa$ by the scalar projection:
 
 \section{The Cross Product}
 
+\begin{definition}
+For $\samplevec$ and $\bb = \langle b_1, b_2, b_3 \rangle$, the \textbf{cross product}
+of $\aaa$ an $\bb$ is:
+\[\aaa \times \bb = \langle a_2 b_3 - a_3 b_2, a_3 b_1 - a_1 b_3, a_1 b_2 - a_2 b_1 \rangle = \begin{vmatrix}
+\mathbf{i} & \mathbf{j} & \mathbf{k} \\
+a_1 & a_2 & a_3 \\
+b_1 & b_2 & b_3
+\end{vmatrix}
+\]
+\end{definition}
+
+\begin{theorem}
+    The vector $\aaa \times \bb$ is orthogonal to both $\aaa$ and $\bb$
+\end{theorem}
+
+\begin{theorem}
+    The length of the cross product is given by: 
+    \[ |\aaa \times \bb| = |\aaa| |\bb| \sin \theta\]
+    where $\theta$is the angle between $\aaa$ and $\bb$.
+\end{theorem}
+
+\begin{corollary}
+    Two nonzeros vectors $\aaa$ and $\bb$ are parallel iff 
+    \[\aaa \times \bb = \0\]
+\end{corollary}
+
+\textbf{Area of parallelogram} determined by $\aaa$ and $\bb$ is $|\aaa \times \bb|$
+
+\textbf{Area of parallelogram} determined by $\aaa$ and $\bb$ is $\frac{1}{2}|\aaa \times \bb|$
+
+\textbf{IMPORTANT:} cross product is NOT commutative, and associate law for multiplication does not usually hold.
+
+\begin{tcolorbox}[colback=red!5!white, colframe=red!75!black, title=Properties of the Cross Product]
+$\forall$ vectors $\aaa, \bb, \cc$ and scalar $c$:
+\begin{enumerate}
+    \item $\aaa \times \bb = - \bb \times \aaa$
+    \item $(c \aaa) \times \bb = c(\aaa \times \bb) = \aaa \times (c \bb)$
+    \item $\aaa \times (\bb + \cc) = \aaa \times \bb + \aaa \times \cc$
+    \item $(\aaa + \bb) \times \cc = \aaa \times \cc + \bb \times \cc$
+    \item $\aaa \cdot (\bb \times \cc) = (\aaa \times \bb) \cdot \cc$
+    \item $\aaa \times (\bb \times \cc) = (\aaa \cdot \cc) \bb - (\aaa \cdot \bb) \cc$
+\end{enumerate}
+\end{tcolorbox}
+
+\textbf{Triple products:}
+
+\[\aaa \cdot (\bb \times \cc) = \begin{vmatrix}
+    a_1 & a_2 & a_3 \\
+    b_1 & b_2 & b_3 \\
+    c_1 & c_2 & c_3 \\
+\end{vmatrix}\]
+
+
+\textbf{Volume of the parallelipiped} determined by the vectors $\aaa, \bb$ and $\cc$
+is:
+\[V = |\aaa \cdot (\bb \times \cc)|\]
+
+Useful: if the volume is 0, then the vectors must lie in the same plane, i.e. \textbf{coplanar}
 \end{document}
