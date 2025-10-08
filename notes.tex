@@ -37,13 +37,13 @@ SH
 
 Projection of a point $(x, y, z)$ onto
 \begin{itemize}
-    \item $x-y$ axis: (x, y, 0)
-    \item $x-z$ axis: (x, 0, z)
-    \item $y-z$ axis: (0, y, z)
+    \item $x-y$ plane: (x, y, 0)
+    \item $x-z$ plane: (x, 0, z)
+    \item $y-z$ plane: (0, y, z)
 \end{itemize} 
 
 \textbf{Distance formula in 3 dimensions:} Between two points $(x_1, y_1, z_1)$ and 
-$(x_2, y_2. z_2)$, the distance is given by:
+$(x_2, y_2, z_2)$, the distance is given by:
 \[\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 +(z_2 - z_1)^2}\]
 
 \textbf{Equation of a Sphere} with center at $(h, k, l)$ and radius $r$ is:
@@ -177,9 +177,9 @@ b_1 & b_2 & b_3
 
 \textbf{Area of parallelogram} determined by $\aaa$ and $\bb$ is $|\aaa \times \bb|$
 
-\textbf{Area of parallelogram} determined by $\aaa$ and $\bb$ is $\frac{1}{2}|\aaa \times \bb|$
+\textbf{Area of triangle} determined by $\aaa$ and $\bb$ is $\frac{1}{2}|\aaa \times \bb|$
 
-\textbf{IMPORTANT:} cross product is NOT commutative, and associate law for multiplication does not usually hold.
+\textbf{IMPORTANT:} cross product is NOT commutative, and associative law for multiplication does not usually hold.
 
 \begin{tcolorbox}[colback=red!5!white, colframe=red!75!black, title=Properties of the Cross Product]
 $\forall$ vectors $\aaa, \bb, \cc$ and scalar $c$:
@@ -202,7 +202,7 @@ $\forall$ vectors $\aaa, \bb, \cc$ and scalar $c$:
 \end{vmatrix}\]
 
 
-\textbf{Volume of the parallelipiped} determined by the vectors $\aaa, \bb$ and $\cc$
+\textbf{Volume of the parallelepiped} determined by the vectors $\aaa, \bb$ and $\cc$
 is:
 \[V = |\aaa \cdot (\bb \times \cc)|\]
 
@@ -213,7 +213,7 @@ Useful: if the volume is 0, then the vectors must lie in the same plane, i.e. \t
 \subsection{Equation of Lines}
 
 \textbf{The equation of a line} that goes through point with position vector $\rr_0$, 
-and is paralell to vector $\vv$ is \[
+and is parallel to vector $\vv$ is \[
 \rr = \rr_0 + t \vv
 \]
 
@@ -248,7 +248,7 @@ In general, the symmetric equations between two points $P_0(x_0, y_0, z_0), P_1(
 
 \textbf{The line segment} from $\rr_0$ to $\rr_1$ is given by the vector equation:
 \[
-\rr(t) = (1 - t)\rr_0 + t \rr_1 \quad \quad 0 \ge t \ge 1
+\rr(t) = (1 - t)\rr_0 + t \rr_1 \quad \quad 0 \le t \le 1
 \]
 
 \subsection{Equation of Planes}
@@ -275,9 +275,9 @@ The \textbf{linear equation} is:
 ax + by + cz - (a x_0 + b y_0 + c z_0) = 0
 \] 
 
-Two planes are paralell if their normal vectors are paralell.
+Two planes are parallel if their normal vectors are parallel.
 
-If two planes are not paralell, then they intersect in a straight line and the angle between the two planes 
+If two planes are not parallel, then they intersect in a straight line and the angle between the two planes 
 is defined as the acute angle between their normal vectors.
 
 The \textbf{distance} $D$ from point $(x_1, y_1, z_1)$ to the plane 
@@ -286,4 +286,60 @@ $ax + by + cz + d = 0$ is
 D = \frac{|a x_1 + b y_1 + c z_1 + d|}{\sqrt{a^2 + b^2 + c^2}}
 \]
 
+\chapter{Vector Function}
+
+Not coming in midterm 1 $:)$
+
+\chapter{Partial Derivatives}
+
+\section{Functions of Several Variables}
+Not coming in midterm 1 $:)$
+
+\section{Limits and Continuity}
+Not coming in midterm 1 $:)$
+
+\section{Partial Derivatives}
+
+If $f$ is a function of two variables, its \textbf{partial derivatives} are the functions 
+$f_x, f_y$ defined by \[
+f_x(x, y) = \lim_{h \mapsto 0} \frac{f(x+h, y) - f(x, y)}{h}\]
+and \[f_y(x, y) = \lim_{h \mapsto 0} \frac{f(x, y+h) - f(x, y)}{h}\]
+
+Also written: 
+\[
+f_x(x, y) = \frac{\partial f}{\partial x} = \frac{\partial z}{\partial x}
+\]
+
+\textbf{Rules for finding the partial derivatives of } $z = f(x, y)$
+\begin{itemize}
+    \item To find $\parx$ regard $y$ as a constant and differentiate $f(x, y)$ with respect to $x$
+    \item To find $\pary$ regard $x$ as a constant and differentiate $f(x, y)$ with respect to $y$
+\end{itemize}
+
+\textbf{Interpretation of partial derivatives:}
+
+The partial derivatives represent the instantaneous rate of change of the function's output with respect to one variable, while all other variables are held constant.
+\begin{itemize}
+    \item $f_x(x,y)$ is the rate at which $f$ changes with respect to $x$ when $y$ is fixed.
+    \item $f_y(x,y)$ is the rate at which $f$ changes with respect to $y$ when $x$ is fixed.
+\end{itemize}
+
+\textbf{Higher Derivatives}: we can take second partial derivatives of $f$. Here is the notation:
+\begin{align*}
+(f_x)_x = f_{xx} &= \frac{\partial^2 f}{\partial x^2} \\
+(f_x)_y = f_{xy} &= \frac{\partial^2 f}{\partial y \partial x} \\
+(f_y)_x = f_{yx} &= \frac{\partial^2 f}{\partial x \partial y} \\
+(f_y)_y = f_{yy} &= \frac{\partial^2 f}{\partial y^2}
+\end{align*}
+
+
+\begin{theorem}
+\textbf{Clairaut's Theorem:} Suppose $f$ is defined on a disk $D$ that contains the 
+point $(a, b)$. If $f_{xy}$ and $f_{yx}$ are both continuous on $D$, then: 
+\[
+f_{xy}(a, b) = f_{yx}(a, b)
+\]
+\end{theorem}
+
+\section{Tangent Planes and Linear Approximations}
 \end{document}
