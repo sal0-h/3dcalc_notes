@@ -132,6 +132,7 @@ Some nice properties of direction cosines:
 The \textbf{projection of} $\bb$ \textbf{onto} $\aaa$ means we drop a perpendicular 
 from the tip of $\bb$ onto the line spanned by $\aaa$. The resulting vector is called 
 the vector projection of $\bb$ onto $\aaa$.
+\\
 
 The \textbf{scalar projection of} $\bb$ \textbf{onto} $\aaa$ is the length of this 
 projection, given by
@@ -139,6 +140,7 @@ projection, given by
 \text{comp}_{\aaa} \bb = |\bb|\cos\theta = \frac{\aaa \cdot \bb}{|\aaa|},
 \]
 where $\theta$ is the angle between $\aaa$ and $\bb$.
+\\
 
 The \textbf{vector projection} of $\bb$ onto $\aaa$ is obtained by multiplying the 
 unit vector in the direction of $\aaa$ by the scalar projection:
@@ -176,8 +178,10 @@ b_1 & b_2 & b_3
 \end{corollary}
 
 \textbf{Area of parallelogram} determined by $\aaa$ and $\bb$ is $|\aaa \times \bb|$
+\\
 
 \textbf{Area of triangle} determined by $\aaa$ and $\bb$ is $\frac{1}{2}|\aaa \times \bb|$
+\\
 
 \textbf{IMPORTANT:} cross product is NOT commutative, and associative law for multiplication does not usually hold.
 
@@ -228,6 +232,7 @@ x = x_0 + t a \quad y = y_0 + t b \quad z = z_0 + t c
 \]
 
 \textbf{Direction numbers} of a line L are the numbers $a, b, c$ from above. 
+\\
 
 \textbf{Symmetric form:} (eliminating $t$) 
 \[
@@ -342,4 +347,32 @@ f_{xy}(a, b) = f_{yx}(a, b)
 \end{theorem}
 
 \section{Tangent Planes and Linear Approximations}
+
+The equation of a \textbf{tangent plane} to the surface $z = f(x, y)$ at the point $P(x_0, y_0, z_0)$ is 
+\[
+z - z_0 = \parx(x_0, y_0) (x - x_0) + \pary(x_0, y_0) (y - y_0)
+\]
+if $f$ has continuous partial derivatives.
+\\
+
+\textbf{The Linear Approximation of} $f$ at $(a, b)$ is:
+\[f(x, y) \approx f(a, b) + \parx(a, b) (x- a) + \pary(a, b) (y-b)\]
+
+Remark: there's a part in the book about differentiability with some epsilon,
+I left it out. 
+
+\begin{theorem}
+If partial derivatives of $f$ exist near $(a, b)$ and are continuous at $(a, b)$ then $f$ is differentiable at $(a, b)$
+\end{theorem}
+
+\textbf{Total differential} $dz$ is defined as
+\[
+dz = \parx dx + \pary dy
+\]
+
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{images/differential.png}
+
+\end{center}
+
 \end{document}
