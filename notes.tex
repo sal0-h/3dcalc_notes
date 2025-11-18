@@ -426,4 +426,122 @@ Given an equation $F(x, y, z) = 0$, the partial derivatives of $z$ are:
 provided that $F_z \neq 0$.
 \end{tcolorbox}
 
+\section{Directional Derivatives and the Gradient Vector}
+
+\begin{definition}
+If $f$ is a differentiable function of $x, y$, the 
+\textbf{directional derivative} of $f$ at $(x_0, y_0)$ in the direction of a 
+unit vector $\uu = \langle a, b\rangle$ is 
+\[
+D_{\uu} f(x, y) = f_x (x, y) a + f_y (x, y) b
+\]
+
+\end{definition}
+
+\begin{definition}
+If $f$ is a function of $x, y$, then the \textbf{gradient} of $f$ is 
+the vector function 
+\[\nabla f (x, y) = \langle f_x (x, y), f_y (x, y) \rangle
+\]
+\end{definition}
+
+With these definitions, we can write the directional derivative cleanly as: 
+\[
+D_{\uu} f(x, y) = \nabla f(x, y) \cdot \uu\]
+
+Equivalently: 
+
+\[
+D_{\uu} f(x, y) = |\nabla f(x, y)| \cos \theta
+\]
+
+where $\theta$ os the angle between $\nabla f(x, y)$ and $\uu$
+
+This generalized to three variable case:
+
+\[D_{\uu} f(x, y, z) = \nabla f(x, y, z) \cdot \uu\]
+
+\begin{theorem}
+If $f$ is differentiable function of 2 or 3 variables, the max 
+value of the directional derivative is $|\nabla f(\xx)|$ and it happens 
+when $\uu$ has the same direction as the vector $\nabla f(\xx)$
+\end{theorem}
+
+\begin{theorem}
+If $f$ is differentiable function of 2 or 3 variables, the min 
+value of the directional derivative is $-|\nabla f(\xx)|$ and it happens 
+when $\uu$ has the same direction as the vector $-\nabla f(\xx)$
+\end{theorem}
+
+\textbf{Equation of tangent plane} to level surface $F(x, y, z) = k$ at 
+$P(x_0, y_0, z_0)$ is:
+
+\[F_x(x_0, y_0, z_0) (x - x_0) + F_y(x_0, y_0, z_0) (y - y_0) + F_z(x_0, y_0, z_0) (z - z_0) = 0\]
+
+\textbf{Equation of normal line} to level surface $F(x, y, z) = k$ at 
+$P(x_0, y_0, z_0)$ is:
+
+\[
+\frac{x-x_0}{F_x} = \frac{y-y_0}{F_y} = \frac{z-z_0}{F_z}
+\]
+
+$\nabla f(\xx)$ is perpedicular to the level curve or level surface of $f$
+through $\xx$
+
+\section{Maximum and Minimum Values}
+
+\begin{definition}
+A point $(a, b)$ is called a \textbf{critical point} of $f$ if 
+$f_x(a, b) = 0$ and $f_y(a, b) = 0$, or if one of these partial derivatives 
+does not exist.
+\end{definition}
+
+\begin{theorem}
+If $f$ has a local max or min at $(a, b)$ and first order partial derivatives
+exist there then $f_x(a, b) = 0 $ and $f_y(a, b) = 0 $
+\end{theorem}
+
+\textbf{Second Derivative Test:}
+
+Let $D(a, b) = f_{xx}(a, b) f_{yy}(a, b) - [f_{xy}(a, b)]^2$
+\begin{itemize}
+    \item If $D(a, b) > 0$ and $f_{xx}(a, b) > 0$, then $(a, b)$ is a local min
+    \item If $D(a, b) > 0$ and $f_{xx}(a, b) < 0$, then $(a, b)$ is a local max
+    \item If $D(a, b) < 0$, then $(a, b)$ is a saddle point 
+    \item If $D(a, b) = 0$ then the test gives no information
+\end{itemize}
+
+If you are crazy then you can use the following to remember the formula for $D$:
+
+\[
+D = \begin{vmatrix}
+f_{xx} & f_{xy}\\
+f_{yx} & f_{yy} \\
+\end{vmatrix} = f_{xx} f_{yy} - (f_{xy})^2
+\]
+
+\begin{definition}
+$f(a, b)$ is \textbf{absolute maximum} of $f$ on $D$ if $f(a, b) \ge f(x, y)$ 
+for all $(x, y)$ in $D$
+
+$f(a, b)$ is \textbf{absolute minimum} of $f$ on $D$ if $f(a, b) \le f(x, y)$ 
+for all $(x, y)$ in $D$
+\end{definition}
+
+\begin{theorem}
+Extreme Value Theorem: A continuous function $f$ will attain both an 
+absolute minimum and an absolute maximum somewhere on a bounded, 
+closed set in $\mathbb{R}^2$
+\end{theorem}
+
+To find where this happens:
+\begin{enumerate}
+    \item Find the values of $f$ at the critical points of $f$ in $D$
+    \item Find the extreme values of $f$ on the boundary of $D$
+    \item The largest from these two is absolute max, the smallest 
+    is absolute min
+\end{enumerate}
+
+\section{Lagrange Multipliers}
+
 \end{document}
