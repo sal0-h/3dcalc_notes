@@ -544,4 +544,198 @@ To find where this happens:
 
 \section{Lagrange Multipliers}
 
+\textbf{The Method of Lagrange Multipliers}
+
+To find the minimum or maximum values of $f(x, y, z)$ subject to the constraint  
+$g(x, y, z) = k$:
+
+\begin{itemize}
+    \item Find all values of $x, y, z, \lambda$ such that
+    \[
+        \nabla f(x, y, z) = \lambda \, \nabla g(x, y, z)
+    \]
+    and
+    \[
+        g(x, y, z) = k.
+    \]
+    \item Evaluate $f$ at all points obtained above.  
+    The largest value gives the maximum; the smallest gives the minimum.
+\end{itemize}
+
+The equations in the first step can be written componentwise as:
+\[
+    f_x = \lambda g_x, \qquad 
+    f_y = \lambda g_y, \qquad
+    f_z = \lambda g_z, \qquad
+    g(x, y, z) = k.
+\]
+
+\textbf{Two Constraints}
+
+If we want to find extrema subject to two constraints  
+$g(x, y, z) = k$ and $h(x, y, z) = c$, we solve:
+\[
+    \nabla f(x, y, z) 
+    = \lambda \nabla g(x, y, z) 
+    + \mu \nabla h(x, y, z),
+\]
+together with
+\[
+    g(x, y, z) = k, \qquad h(x, y, z) = c.
+\]
+
+Equivalently, this system is:
+\[
+\begin{aligned}
+    f_x &= \lambda g_x + \mu h_x, \\
+    f_y &= \lambda g_y + \mu h_y, \\
+    f_z &= \lambda g_z + \mu h_z, \\
+    g(x, y, z) &= k, \\
+    h(x, y, z) &= c.
+\end{aligned}
+\]
+
+\chapter{Multiple Integrals}
+
+\section{Double Integrals over Rectangles}
+
+\textbf{Volumes and Double Integrals}
+
+If $f(x, y) \ge 0$, then the volume $V$ of solid that lies above the rectangle 
+$R$ and below surface $z = f(x, y)$ is 
+\[
+V = \iint_R f(x,y)\, dA
+\]
+
+\textbf{Midpoint Rule for Double Integrals}:
+
+\[\iint_D f(x,y)\, dA \approx \sum_{i=1}^{m} \sum_{j=1}^{n} f(\bar{x_i}, \bar{y_j}) \Delta A\]
+
+where $\bar{x_i}$ is the midpoint of $[x_{i-1}, x_i]$, $\bar{y_j}$ is the 
+midpoint of $[y_{j-1}, y_j]$
+
+\textbf{Fubini's Theorem.}: If $f$ is continuous on a rectangle $R = \{(x, y) | a \le x \le b, c \le y \le d\}$
+then 
+
+\[
+\iint_R f(x, y)\, dA = \int_{a}^{b} \int_{c}^{d} f(x, y) \, dy \, dx 
+= \int_{c}^{d} \int_{a}^{b} f(x, y) \, dx \, dy 
+\]
+
+If $f(x, y)$ can be written in the form $f(x, y) = g(x)h(y)$ then 
+
+\[
+\iint_R f(x, y)\, dA = \iint_R g(x)h(y) \, dA = 
+\int_{a}^{b} g(x) \, dx \int_{c}^{d} h(y) \, dy
+\] where $R = [a, b] \times [c, d]$
+
+\textbf{Average value} of a function $f$ on a rectangle $R$ is:
+
+\[
+f_{\text{average}} = \frac{1}{\text{Area}(R)} \iint_R f(x, y)\, dA
+\]
+
+Interesting: if $f(x, y) \ge 0$, then $\text{Area}(R) \times f_{\text{average}} = \iint_R f(x, y)\, dA$
+
+This says that the box with base $R$ and height $f_{\text{average}}$ has the 
+same volume as the solid that lies under the graph of $f$. 
+
+\section{Double Integrals over General Regions}
+
+A plane region $D$ is \textbf{type 1} if it lies between the graphs of two 
+continuous functions of $x$, i.e.
+\[D = \{(x, y) | a \le x \le b, g_1(x) \le y \le g_2(x)\}\]
+
+In this case, we have:
+
+\[
+\iint_{D} f(x, y) \, dA = \int_{a}^{b} \int_{g_1(x)}^{g_2(x)} f(x, y) \, dy \, dx
+\]
+
+Illustration (think of drawing a vertical arrow across the region):
+
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{images/type1.png}
+\end{center}
+
+A plane region $D$ is \textbf{type 2} if it lies between the graphs of two 
+continuous functions of $y$, i.e.
+\[D = \{(x, y) | c \le y \le d, h_1(y) \le x \le h_2(y)\}\]
+
+In this case, we have:
+
+\[
+\iint_{D} f(x, y) \, dA = \int_{c}^{d} \int_{h_1(y)}^{h_2(y)} f(x, y) \, dx \, dy
+\]
+
+Illustration (think of drawing a horizontal arrow across the region):
+
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{images/type2.png}
+\end{center}
+
+\textbf{Properties:}
+\begin{itemize}
+    \item $\iint_D [f(x,y) + g(x,y)] \, dA = \iint_R f(x,y) \, dA + \iint_R g(x,y) \, dA$
+    \item $\iint_D c f(x,y) \, dA = c \iint_R f(x,y) \, dA$
+    \item If $f(x,y) \ge g(x,y)$ for all $(x,y)$ in $D$, then $\iint_D f \, dA \ge \iint_D g \, dA$
+    \item If $D = D_1 \cup D_2$ where $D_1, D_2$ don't overlap except at boundaries,
+    then 
+    
+    $\iint_D f(x, y) \, dA = \iint_{D_1} f(x, y) \, dA + \iint_{D_2} f(x, y) \, dA$
+    \item $\iint_D 1 \, dA = \text{Area}(D)$
+\end{itemize} 
+
+\textbf{Strategy: Switching the Order of Integration}
+Sometimes an integral is impossible to evaluate in the given order. 
+To solve this:
+\begin{enumerate}
+    \item Sketch the region $D$ based on the given bounds.
+    \item Interpret the region as the \textit{other} Type (switch from Type I to II or vice versa).
+    \item Rewrite the integral with the new bounds and new order ($dx \, dy \leftrightarrow dy \, dx$).
+\end{enumerate}
+
+\section{Double Integrals in Polar Coordinates}
+
+\textbf{Relationship between rectangular coordinates and polar coordinates:}
+
+\[
+r^2 = x^2 + y^2, \quad x = r \cos \theta, \quad y = r \sin \theta
+\]
+
+\textbf{Double Integrals in Polar Coordinates}
+
+Polar Rectangle: 
+$R = \{(r, \theta) \, | \, a \le r \le b, \alpha \le \theta \le \beta\}$
+
+\begin{theorem} 
+If $f$ is continuous on a polar rectangle $R$ where $0 \le a \le r \le b$,
+$\alpha \le \theta \le \beta$ and $0 \le \beta - \alpha \le 2 \pi$,
+then 
+\[
+\iint_{R} f(x, y) \, dA = \int_{\alpha}^{\beta} \int_{a}^{b} 
+f(r \cos \theta, r \sin \theta) \, r \, dr \, d \theta
+\]
+\end{theorem}
+
+More complicated region: 
+$D = \{(r, \theta) \, | \, \alpha \le \theta \le \beta, h_1(\theta) \le r \le h_2(\theta)\}$
+then the following is true:
+
+\[
+\iint_{D} f(x, y) \, dA = \int_{\alpha}^{\beta} \int_{h_1(\theta)}^{h_2(\theta)} 
+f(r \cos \theta, r \sin \theta) \, r \, dr \, d \theta
+\]
+
+\textbf{Common Polar Bounds:}
+\begin{itemize}
+    \item \textbf{Full Circle} (radius $a$): $0 \le r \le a$, $0 \le \theta \le 2\pi$
+    \item \textbf{Top Semicircle}: $0 \le r \le a$, $0 \le \theta \le \pi$
+    \item \textbf{Right Semicircle}: $0 \le r \le a$, $-\pi/2 \le \theta \le \pi/2$
+    \item \textbf{Annulus (Ring)} (radii $a$ and $b$): $a \le r \le b$, $0 \le \theta \le 2\pi$
+\end{itemize}
+
+\section{Applications of Double Integrals (Probability)}
+
+
 \end{document}
