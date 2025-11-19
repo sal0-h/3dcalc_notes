@@ -737,5 +737,36 @@ f(r \cos \theta, r \sin \theta) \, r \, dr \, d \theta
 
 \section{Applications of Double Integrals (Probability)}
 
+A function $f(x, y)$ is a \textbf{joint density function} for a pair of random variables $(X, Y)$ if:
+\begin{itemize}
+    \item $f(x, y) \ge 0$ for all $(x, y)$
+    \item The total volume under the graph is 1:
+    \[ \iint_{\mathbb{R}^2} f(x, y) \, dA = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x, y) \, dx \, dy = 1 \]
+\end{itemize}
 
+The probability that $(X, Y)$ lies in a region $D$ is the volume under the surface over $D$:
+\[ P((X, Y) \in D) = \iint_D f(x, y) \, dA \]
+
+\begin{itemize}
+    \item \textbf{Mean of X:} 
+    \[ E[X] = \iint_{\mathbb{R}^2} x f(x, y) \, dA \]
+    \item \textbf{Mean of Y:} 
+    \[ E[Y] = \iint_{\mathbb{R}^2} y f(x, y) \, dA \]
+\end{itemize}
+
+Two random variables $X$ and $Y$ are \textbf{independent} if their joint density function is the product of their individual p.d.f.'s:
+\[ f(x, y) = f_1(x) f_2(y) \]
+Where $f_1$ and $f_2$ are the single-variable density functions for $X$ and $Y$.
+
+\textbf{Exponential Random Variables}
+
+If $X$ and $Y$ are independent exponential variables with means $\mu_1$ and $\mu_2$:
+\[
+f(x, y) = \begin{cases}
+    \frac{1}{\mu_1 \mu_2} e^{-x/\mu_1} e^{-y/\mu_2} & \text{if } x \ge 0, y \ge 0 \\
+    0 & \text{otherwise}
+\end{cases}
+\]
+
+The single variable form is $f(t) = \frac{1}{\mu}e^{-t/\mu}$ for $t \ge 0$.
 \end{document}
