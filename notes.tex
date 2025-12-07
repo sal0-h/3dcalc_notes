@@ -6,6 +6,7 @@
 \usepackage{enumitem}
 \usepackage{amsmath} % For math environments
 \usepackage{tcolorbox}
+\usepackage{romannum}
 \input{preamble}
 \setlength{\parindent}{0pt} % Ensure that no indent is added
 \title{21-259 Calculus in 3D}
@@ -291,9 +292,9 @@ $ax + by + cz + d = 0$ is
 D = \frac{|a x_1 + b y_1 + c z_1 + d|}{\sqrt{a^2 + b^2 + c^2}}
 \]
 
-\chapter{Vector Function}
+\chapter{Vector Functions}
 
-Not coming in midterm 1 $:)$
+Not coming
 
 \chapter{Partial Derivatives}
 
@@ -643,7 +644,7 @@ same volume as the solid that lies under the graph of $f$.
 
 \section{Double Integrals over General Regions}
 
-A plane region $D$ is \textbf{type 1} if it lies between the graphs of two 
+A plane region $D$ is \textbf{type} \Romannum{1} if it lies between the graphs of two 
 continuous functions of $x$, i.e.
 \[D = \{(x, y) | a \le x \le b, g_1(x) \le y \le g_2(x)\}\]
 
@@ -659,7 +660,7 @@ Illustration (think of drawing a vertical arrow across the region):
     \includegraphics[width=0.5\textwidth]{images/type1.png}
 \end{center}
 
-A plane region $D$ is \textbf{type 2} if it lies between the graphs of two 
+A plane region $D$ is \textbf{type} \Romannum{2} if it lies between the graphs of two 
 continuous functions of $y$, i.e.
 \[D = \{(x, y) | c \le y \le d, h_1(y) \le x \le h_2(y)\}\]
 
@@ -770,4 +771,111 @@ f(x, y) = \begin{cases}
 \]
 
 The single variable form is $f(t) = \frac{1}{\mu}e^{-t/\mu}$ for $t \ge 0$.
+
+\section{Surface Area}
+
+The area of the surface with equation $z = f(x, y)$, $(x, y) \in D$, where 
+$f_x, f_y$ are continuous, is 
+
+\[
+A(S) = \iint_{D} \sqrt{[f_x(x, y)]^2 + [f_y(x, y)]^2 + 1} \; dA
+\]
+
+\section{Triple Integrals}
+
+If $f$ is continuous on the rectangular box $B = [a, b] \times [c, d] \times [r, s]$
+then 
+\[
+\iiint_B f(x, y, z) dV = \int_{r}^{s} \int_{c}^{d} \int_{a}^{b} f(x, y, z) \; dx \; dy \; dz
+\]
+
+A region $E$ is \textbf{type 1} if it lies between two
+continuous functions of $x, y$
+
+\[
+E = \{(x, y, z) | (x, y) \in D, u_1(x, y) \le z \le u_2(x, y)\}
+\]
+
+where $D$ is the projection of $E$ onto $xy$-plane. 
+
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{images/type1_triple.png}
+\end{center}
+
+In this case we have:
+
+\[
+\iiint_E f(x, y, z) dV = \iint_D \left[ \int_{u_1(x, y)}^{u_2(x, y)} f(x, y, z) \; dz \right] \; dA
+\]
+
+Then we evaluate it based on whether the projected region $D$ is type \Romannum{1} or 
+\Romannum{2}
+
+\begin{itemize}
+    \item If $D$ is type \Romannum{1} then 
+    $E = \{(x, y, z) | a \le x \le b, g_1(x) \le y \le g_2(x), u_1(x, y) \le z \le u_2(x, y)\}$
+
+    so the integral becomes:
+
+    \[
+        \iiint_E f(x, y, z) dV = \int_{a}^{b} \int_{g_1(x)}^{g_2(x)} \int_{u_1(x, y)}^{u_2(x, y)} f(x, y, z) \; dz \; dy \; dx
+    \]
+
+    \item If $D$ is type \Romannum{2} then 
+    $E = \{(x, y, z) | c \le y \le d, h_1(y) \le x \le h_2(y), u_1(x, y) \le z \le u_2(x, y)\}$
+
+    so the integral becomes:
+
+    \[
+    \iiint_E f(x, y, z) dV = \int_{c}^{d} \int_{h_1(y)}^{h_2(y)} \int_{u_1(x, y)}^{u_2(x, y)} f(x, y, z) \; dz \; dx \; dy
+    \]
+\end{itemize}
+
+There is also \textbf{type 2}: $E = \{(x, y, z) | (y, z) \in D, u_1(y, z) \le x \le u_2(y, z)\}$
+where $D$ is the projection of $E$ onto the $yz$-plane.
+
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{images/type2_triple.png}
+\end{center}
+
+And finally \textbf{type 3}: $E = \{(x, y, z) | (x, z) \in D, u_1(x, z) \le y \le u_2(x, z)\}$
+where $D$ is the projection of $E$ onto the $xz$-plane.
+
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{images/type3_triple.png}
+\end{center}
+
+Evaluation generalizes from the previous case.
+
+Changing the Order of Integration also generalizes from previous.
+
+Interesting: if $f(x, y, z) = 1$ for all points in $E$ 
+then $V(E) = \iiint_E dV$ is in fact the volume of $E$. Wow. 
+
+
+\section{Triple Integrals in Cylindrical Coordinates}
+
+A point $P$ in the \textbf{cylindrical coordinate system} is represented by a 
+triple $(r, \theta, z)$ where $r, \theta$ are polar coordinates of projection of 
+$P$ onto the $XY$-plane and $Z$ is the directed distance $xy$-plane to $P$.
+
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{images/cylindrical.png}
+\end{center}
+
+To convert from cylindrical to rectangular coordinates, we use the equations
+
+\[
+x = r \cos \theta \quad \quad y = r \sin \theta \quad \quad z = z
+\]
+
+To convert it back, we use:
+
+\[
+r^2 = x^2 + y^2 \quad \quad \tan \theta = \frac{y}{x} \quad \quad z = z
+\]
+
+\textbf{Triple Integrals in Cylindrical Coordinates}:
+
+
 \end{document}
