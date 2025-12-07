@@ -856,20 +856,20 @@ then $V(E) = \iiint_E dV$ is in fact the volume of $E$. Wow.
 \section{Triple Integrals in Cylindrical Coordinates}
 
 A point $P$ in the \textbf{cylindrical coordinate system} is represented by a 
-triple $(r, \theta, z)$ where $r, \theta$ are polar coordinates of projection of 
-$P$ onto the $XY$-plane and $Z$ is the directed distance $xy$-plane to $P$.
+triple $(r, \theta, z)$ where $r, \theta$ are polar coordinates of the projection of 
+$P$ onto the $xy$-plane and $z$ is the directed distance from the $xy$-plane to $P$.
 
 \begin{center}
     \includegraphics[width=0.4\textwidth]{images/cylindrical.png}
 \end{center}
 
-To convert from cylindrical to rectangular coordinates, we use the equations
+To convert from cylindrical to rectangular coordinates, we use the equations:
 
 \[
 x = r \cos \theta \quad \quad y = r \sin \theta \quad \quad z = z
 \]
 
-To convert it back, we use:
+To convert back to cylindrical, we use:
 
 \[
 r^2 = x^2 + y^2 \quad \quad \tan \theta = \frac{y}{x} \quad \quad z = z
@@ -877,5 +877,83 @@ r^2 = x^2 + y^2 \quad \quad \tan \theta = \frac{y}{x} \quad \quad z = z
 
 \textbf{Triple Integrals in Cylindrical Coordinates}:
 
+Suppose that $E$ is a region whose projection $D$ on the $xy$-plane
+is conveniently described in polar coordinates (e.g., a polar rectangle):
+
+\[
+E = \{(r, \theta, z) \mid \alpha \le \theta \le \beta, h_1(\theta) \le r \le h_2(\theta), u_1(r, \theta) \le z \le u_2(r, \theta) \}
+\]
+
+The fundamental identity for the volume element is:
+\[
+dV = r \, dz \, dr \, d\theta
+\]
+
+Thus, the formula for triple integration is:
+
+\[
+\iiint_E f(x, y, z) \, dV = \int_{\alpha}^{\beta} \int_{h_1(\theta)}^{h_2(\theta)} \int_{u_1(r \cos \theta, r \sin \theta)}^{u_2(r \cos \theta, r \sin \theta)} f(r \cos \theta, r \sin \theta, z) \; r \; dz \, dr \, d\theta
+\]
+
+\textbf{Note:} It is crucial to remember the factor of $\mathbf{r}$ in the integrand. 
+This comes from the area element in polar coordinates ($dA = r \, dr \, d\theta$).
+
+Use cylindrical coordinates when:
+\begin{enumerate}
+    \item The domain $E$ has symmetry about the $z$-axis (e.g., cylinders, cones).
+    \item The integrand involves the expression $x^2 + y^2$.
+\end{enumerate}
+
+\section{Triple Integrals in Spherical Coordinates}
+
+The \textbf{spherical coordinates} of a point $P$ are $(\rho, \theta, \phi)$, where:
+\begin{itemize}
+    \item $\rho$ is the distance from the origin to $P$ ($\rho \ge 0$).
+    \item $\theta$ is the same angle as in cylindrical coordinates ($0 \le \theta \le 2\pi$).
+    \item $\phi$ is the angle between the positive $z$-axis and the line segment $OP$ ($0 \le \phi \le \pi$).
+\end{itemize}
+
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{images/spherical.png}
+\end{center}
+
+
+\textbf{Converting to Rectangular:}
+
+\[
+x = \rho \sin \phi \cos \theta \quad \quad y = \rho \sin \phi \sin \theta 
+\quad \quad z = \rho \cos \phi
+\]
+
+\textbf{Converting to Spherical:}
+
+\[
+\rho^2 = x^2 + y^2 + z^2
+\]
+
+\textbf{Integration Volume Element:}
+
+The volume element in spherical coordinates is given by:
+\[
+dV = \rho^2 \sin \phi \, d\rho \, d\theta \, d\phi
+\]
+
+
+
+\textbf{Integrating over a Spherical Wedge:}
+
+A "spherical wedge" is the simplest region, defined by constant bounds (similar to a rectangular box):
+
+\[
+E = \{(\rho, \theta, \phi) \mid a \le \rho \le b, \alpha \le \theta \le \beta, c \le \phi \le d\}
+\]
+
+For this region, the integral becomes:
+
+\[
+\iiint_E f(x, y, z) \; dV = \int_{c}^{d} \int_{\alpha}^{\beta} \int_{a}^{b}
+f(\rho \sin \phi \cos \theta, \rho \sin \phi \sin \theta, \rho \cos \phi) 
+\; \rho^2 \sin \phi \; d\rho \, d\theta \, d\phi
+\]
 
 \end{document}
