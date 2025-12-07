@@ -7,6 +7,8 @@
 \usepackage{amsmath} % For math environments
 \usepackage{tcolorbox}
 \usepackage{romannum}
+\usepackage{tikz}
+
 \input{preamble}
 \setlength{\parindent}{0pt} % Ensure that no indent is added
 \title{21-259 Calculus in 3D}
@@ -938,11 +940,12 @@ The volume element in spherical coordinates is given by:
 dV = \rho^2 \sin \phi \, d\rho \, d\theta \, d\phi
 \]
 
+Why? You can derive it with the Jacobian in the next section. Exciting..
 
+\textbf{Integrating over a \textcolor{red}{Spherical Wedge:}}
 
-\textbf{Integrating over a Spherical Wedge:}
-
-A "spherical wedge" is the simplest region, defined by constant bounds (similar to a rectangular box):
+A \textbf{spherical} wedge is the simplest region, defined by constant bounds (similar to a rectangular box
+but its not a rectangular box it is a \textbf{\textcolor{blue}{spherical}} wedge do not call it a rectangular box):
 
 \[
 E = \{(\rho, \theta, \phi) \mid a \le \rho \le b, \alpha \le \theta \le \beta, c \le \phi \le d\}
@@ -955,5 +958,264 @@ For this region, the integral becomes:
 f(\rho \sin \phi \cos \theta, \rho \sin \phi \sin \theta, \rho \cos \phi) 
 \; \rho^2 \sin \phi \; d\rho \, d\theta \, d\phi
 \]
+
+\textbf{Crucial Note:} E is the \textcolor{red}{spherical wedge} from before. 
+
+Here is how a \textcolor{green}{spherical wedge} looks like if you're wondering:
+
+\begin{center}
+    \includegraphics[width=0.2\textwidth]{images/spherical_wedge.png}
+\end{center}
+
+Disgusting creature.
+
+
+\section{Change of Variables in Multiple Integrals}
+
+The Jacobian measures how a transformation $T$ distorts area or volume. For a transformation $x = g(u,v)$ and $y = h(u,v)$, the Jacobian is the determinant of the partial derivatives:
+
+\[
+\frac{\partial(x, y)}{\partial(u, v)} = 
+\begin{vmatrix}
+\frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\
+\frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}
+\end{vmatrix}
+= \frac{\partial x}{\partial u}\frac{\partial y}{\partial v} - \frac{\partial x}{\partial v}\frac{\partial y}{\partial u}
+\]
+
+If we transform a region $S$ in the $uv$-plane to a region $R$ in the $xy$-plane, the integral changes as follows:
+
+\[
+\iint_{R} f(x, y) \, dA = \iint_{S} f(x(u,v), y(u,v)) \left| \frac{\partial(x, y)}{\partial(u, v)} \right| \, du \, dv
+\]
+
+\textbf{Crucial Note:} We always take the \textbf{absolute value} of the Jacobian in the integral.
+\\
+
+The concept extends to 3D with a $3 \times 3$ determinant:
+
+\[
+\frac{\partial(x, y, z)}{\partial(u, v, w)} = 
+\begin{vmatrix}
+\frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} & \frac{\partial x}{\partial w} \\
+\frac{\partial y}{\partial u} & \frac{\partial y}{\partial v} & \frac{\partial y}{\partial w} \\
+\frac{\partial z}{\partial u} & \frac{\partial z}{\partial v} & \frac{\partial z}{\partial w}
+\end{vmatrix}
+\]
+
+And the integral becomes:
+\[
+\iiint_{R} f(x, y, z) \, dV = \iiint_{S} f(x(u,v,w), y(u,v,w), z(u,v,w)) \left| \frac{\partial(x, y, z)}{\partial(u, v, w)} \right| \, du \, dv \, dw
+\]
+
+
+\chapter{Spherical Wedges}
+\section{Optional Topic: Deep Dive into Spherical Wedges}
+\markright{Optional: Spherical Wedges}
+
+\emph{ This section is \textbf{insane}. It details the geometry of "constant limit" regions. Understanding this helps significantly with visualization, but it is not strictly required if you just want to memorize the integration formulas.}
+
+A \textbf{spherical wedge} is the fundamental building block of integration in spherical coordinates. It is the spherical equivalent of a "box." 
+
+Just as a rectangular box is defined by constant $x, y, z$ limits, and a polar rectangle is defined by constant $r, \theta$ limits, a spherical wedge is defined by constant $\rho, \theta, \phi$ limits.
+
+But don't compare it to rectangles. 
+
+\subsection*{1. Formal Definition}
+
+A spherical wedge $E$ is the region defined by inequalities where all bounds are constants:
+
+\[
+E = \{(\rho,\theta,\phi)\mid 
+a \le \rho \le b,\;
+\alpha \le \theta \le \beta,\;
+c \le \phi \le d\}
+\]
+
+\subsection*{2. Deconstructing the Boundaries}
+
+To understand the wedge, we must understand its six "faces." Unlike a cube, which has 6 flat faces, a spherical wedge has curved faces defined by the coordinate surfaces.
+
+
+
+\begin{enumerate}
+    \item \textbf{The "Inner" and "Outer" Walls ($\rho$):}
+    The inequalities $a \le \rho \le b$ describe the region between two concentric spheres.
+    \begin{itemize}
+        \item $\rho = a$: The inner sphere (the core).
+        \item $\rho = b$: The outer sphere (the crust).
+    \end{itemize}
+    
+    \item \textbf{The "Side" Walls ($\theta$):}
+    The inequalities $\alpha \le \theta \le \beta$ describe a vertical slice, like a door swinging open.
+    \begin{itemize}
+        \item $\theta = \alpha$: A vertical half-plane starting at the $z$-axis.
+        \item $\theta = \beta$: Another vertical half-plane rotated by an angle.
+    \end{itemize}
+
+    \item \textbf{The "Top" and "Bottom" Lids ($\phi$):}
+    The inequalities $c \le \phi \le d$ describe the region between two cones.
+    \begin{itemize}
+        \item $\phi = c$: An upper cone opening upwards.
+        \item $\phi = d$: A lower cone (or wider cone) opening downwards.
+    \end{itemize}
+\end{enumerate}
+
+The intersection of these three constraints creates the "wedge" shape.
+
+\begin{center}
+    \includegraphics[width=0.35\textwidth]{images/spherical_wedge.png}
+\end{center}
+
+\subsection*{3. The "Separation of Variables" Shortcut}
+
+The single most useful property of a spherical wedge is that the limits of integration are all \textbf{constants}. 
+
+If your integrand $f(\rho, \theta, \phi)$ can be factored into separate functions $f = f_1(\rho)f_2(\theta)f_3(\phi)$, you can split the triple integral into the product of three single integrals.
+
+For a function $f(\rho, \theta, \phi) = g(\rho)h(\theta)k(\phi)$ over a wedge $E$:
+
+\[
+\iiint_E f \, dV = \left( \int_a^b g(\rho)\rho^2 \, d\rho \right) 
+\left( \int_\alpha^\beta h(\theta) \, d\theta \right) 
+\left( \int_c^d k(\phi)\sin\phi \, d\phi \right)
+\]
+
+\textbf{Why this matters:} This turns a complex 3D calculus problem into three simple Calculus I problems.
+
+\subsection*{4. Deriving the Volume Formula}
+
+Let's calculate the volume of a general wedge. Recall that Volume $V = \iiint_E 1 \, dV$.
+
+\[
+V = \int_{c}^{d}\!\int_{\alpha}^{\beta}\!\int_{a}^{b} 
+1 \cdot (\underbrace{\rho^{2}\sin\phi}_{\text{Jacobian}}) \; d\rho\, d\theta\, d\phi
+\]
+
+Since the limits are constant, we use the shortcut from Section 3 to separate the terms:
+
+\[
+V = \left( \int_{a}^{b} \rho^2 \, d\rho \right) \cdot 
+    \left( \int_{\alpha}^{\beta} d\theta \right) \cdot 
+    \left( \int_{c}^{d} \sin\phi \, d\phi \right)
+\]
+
+Now we evaluate each piece:
+
+\begin{align*}
+    \text{Radius term:} & \quad \int_{a}^{b} \rho^2 \, d\rho = \left[ \frac{\rho^3}{3} \right]_a^b = \frac{b^3 - a^3}{3} \\
+    \text{Theta term:} & \quad \int_{\alpha}^{\beta} d\theta = [\theta]_\alpha^\beta = \beta - \alpha \\
+    \text{Phi term:} & \quad \int_{c}^{d} \sin\phi \, d\phi = [-\cos\phi]_c^d = \cos c - \cos d
+\end{align*}
+
+Multiplying them together gives the master formula:
+
+\[
+\boxed{V = \frac{b^3 - a^3}{3} (\beta - \alpha) (\cos c - \cos d)}
+\]
+
+\subsection*{5. Intuitive Check: The "Ice Cream Cone"}
+
+Let's check if this formula works for a shape we know: the \textbf{Ice Cream Cone} (a sphere sector).
+\begin{itemize}
+    \item Radius: $0 \le \rho \le R$ (so $a=0, b=R$)
+    \item Full rotation: $0 \le \theta \le 2\pi$ (so $\beta - \alpha = 2\pi$)
+    \item Cone angle: $0 \le \phi \le \phi_0$ (so $c=0, d=\phi_0$)
+\end{itemize}
+
+Plug these into the formula:
+\[
+V = \frac{R^3}{3} (2\pi) (\cos(0) - \cos(\phi_0)) = \frac{2\pi R^3}{3} (1 - \cos\phi_0)
+\]
+This is the standard formula for the volume of a spherical sector! 
+
+
+
+\subsection*{6. Geometric Insight (The "Pyramid" Analogy)}
+
+There is a beautiful geometric reason for the factor of $\frac{1}{3}$. 
+
+Recall that the volume of a pyramid (or cone) is $V = \frac{1}{3} \times \text{Base Area} \times \text{Height}$.
+A spherical wedge with inner radius $a=0$ is essentially a "curved pyramid" where the "base" is the spherical cap on the surface of the sphere, and the "height" is the radius $\rho$.
+
+If we let $A(S)$ be the area of the curved surface on the sphere of radius $R$, the volume is exactly:
+\[
+V = \frac{1}{3} R \times A(S)
+\]
+This connects the triple integral back to simple geometry.
+
+\subsection*{7. Proving the Magic: The Jacobian Derivation}
+
+You might wonder where the term $\rho^2 \sin \phi$ comes from. It isn't magic; it is the determinant of the transformation matrix (the Jacobian). 
+
+Let's prove it. The transformation from spherical $(\rho, \phi, \theta)$ to rectangular $(x, y, z)$ is:
+\[
+x = \rho \sin \phi \cos \theta, \quad y = \rho \sin \phi \sin \theta, \quad z = \rho \cos \phi
+\]
+
+We calculate the partial derivatives to form the Jacobian matrix:
+
+\[
+J = \frac{\partial(x,y,z)}{\partial(\rho,\phi,\theta)} = 
+\begin{vmatrix}
+\sin\phi\cos\theta & \rho\cos\phi\cos\theta & -\rho\sin\phi\sin\theta \\
+\sin\phi\sin\theta & \rho\cos\phi\sin\theta & \rho\sin\phi\cos\theta \\
+\cos\phi & -\rho\sin\phi & 0
+\end{vmatrix}
+\]
+
+
+
+Expanding this $3 \times 3$ determinant (usually along the bottom row) and applying the Pythagorean identity $\cos^2\theta + \sin^2\theta = 1$ eventually simplifies to:
+
+\[
+J = -\rho^2 \sin \phi
+\]
+
+Since volume must be positive, we take the absolute value:
+\[
+|J| = \rho^2 \sin \phi
+\]
+\textbf{This is exactly the extra factor in our volume element!}
+
+\subsection*{8. The "Universe Brain" Concept: Solid Angles}
+
+If we look closely at our volume formula for the wedge, we can see a beautiful analogy to 2D geometry.
+
+In 2D, an angle $\theta$ cuts out a \textbf{sector} of a circle.
+In 3D, a "solid angle" $\Omega$ (measured in \textit{steradians}) cuts out a \textbf{wedge} of a sphere.
+
+The solid angle $\Omega$ of our wedge is defined by the angular limits:
+\[
+\Omega = (\beta - \alpha)(\cos c - \cos d)
+\]
+
+Now, look at the comparison table. It reveals that Spherical Wedges are just the 3D version of Pizza Slices.
+
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Concept} & \textbf{2D Circle Sector} & \textbf{3D Spherical Wedge} \\
+\hline
+\textbf{Radius} & $r$ & $\rho$ \\
+\hline
+\textbf{Angle Measure} & $\theta$ (radians) & $\Omega$ (steradians) \\
+\hline
+\textbf{Arc/Surface} & Arc Length $s = r\theta$ & Surface Area $A = \rho^2 \Omega$ \\
+\hline
+\textbf{Size} & Area $A = \frac{1}{2}r^2 \theta$ & Volume $V = \frac{1}{3}\rho^3 \Omega$ \\
+\hline
+\end{tabular}
+\end{center}
+
+
+
+This explains the factor of $\frac{1}{3}$ perfectly:
+\begin{itemize}
+    \item Integrating $r$ gives $\frac{1}{2}r^2$.
+    \item Integrating $\rho^2$ gives $\frac{1}{3}\rho^3$.
+\end{itemize}
+
+The spherical wedge is simply the 3D extension of the integration power rule!
 
 \end{document}
